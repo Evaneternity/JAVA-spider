@@ -28,7 +28,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#About" text="About" />
+                  <MenuItem mnemonicParsing="false" onAction="#Help" text="HelpText" />
             </items>
           </Menu>
         </menus>
@@ -39,80 +40,22 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="871.0">
                      <children>
-                        <TextField fx:id="SearchField" onAction="#handleFieldEnter" prefHeight="32.0" prefWidth="426.0" promptText="输入书名搜索                                                                 ☜" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Label fx:id="DateLbl" layoutX="615.0" layoutY="32.0" prefHeight="32.0" prefWidth="426.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
-                        <Button fx:id="DateBtn" layoutX="961.0" layoutY="32.0" mnemonicParsing="false" onAction="#handleDateBtnClick" prefHeight="32.0" text="Nothing" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
-                        <VBox alignment="CENTER" layoutX="40.0" layoutY="254.0" prefHeight="270.0" prefWidth="1000.0">
-                           <children>
-                              <HBox prefHeight="117.0" prefWidth="1000.0">
-                                 <children>
-                                    <Label fx:id="BookLbl" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" text="Label">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="BookLbl1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" text="Label">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="BookLbl2" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" text="Label">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="BookLbl3" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" text="Label">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="BookLbl4" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" text="Label">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="100.0" prefWidth="934.0">
-                                 <children>
-                                    <Button fx:id="LoadBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="下载">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button fx:id="LoadBtn1" layoutX="30.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="下载">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button fx:id="LoadBtn2" layoutX="30.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="下载">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button fx:id="LoadBtn3" layoutX="30.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="下载">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button fx:id="LoadBtn4" layoutX="30.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="下载">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
+                        <TextField fx:id="SearchField" layoutX="189.0" layoutY="135.0" onAction="#handleFieldEnter" prefHeight="32.0" prefWidth="426.0" promptText="输入书名搜索                                                                 ☜" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="150.0" />
+                        <Label fx:id="DateLbl" layoutX="200.0" layoutY="202.0" prefHeight="32.0" prefWidth="802.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="202.0" />
+                        <Button fx:id="DateBtn" layoutX="200.0" layoutY="344.0" mnemonicParsing="false" onAction="#handleDateBtnClick" prefHeight="32.0" text="Nothing" AnchorPane.topAnchor="344.0" />
+                        <TextField fx:id="URLField" layoutX="200.0" layoutY="269.0" onAction="#URLFieldEntered" prefHeight="32.0" prefWidth="426.0" promptText="输入小说第一章网址以下载小说（目前已支持笔下文学网）" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="250.0" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab onSelectionChanged="#FillBookList" text="        书架        ">
+          <Tab text="        书架        ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="BookList" layoutX="259.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" />
+                        <ListView fx:id="BookList" layoutX="259.0" layoutY="57.0" prefHeight="658.0" prefWidth="1041.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
+                        <Label fx:id="SomethingLbl" layoutX="772.0" layoutY="5.0" prefHeight="32.0" prefWidth="426.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="SomethingBtn" layoutX="945.0" layoutY="-4.0" mnemonicParsing="false" onAction="#SomethingBtnClick" text="Something" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="ReaderBtn" layoutX="8.0" layoutY="651.0" mnemonicParsing="false" onAction="#ReaderBtnClick" text="读这本书" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="8.0" />
                      </children>
                   </AnchorPane>
             </content>

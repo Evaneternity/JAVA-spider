@@ -159,14 +159,20 @@ public class JSQ {
     	Dimension d = Toolkit.getDefaultToolkit().getScreenSize(); 
         frame.setSize(d.width,d.height); 
         frame.setVisible(true); 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent e) {
+            frame.dispose();
+        }
+        });
         Dimension b = frame.getSize();
     }
     
     private void addEventHandler(){ 
         //文件项的监听
     	open.addActionListener(new ActionListener() 
-        {public void actionPerformed(ActionEvent e){fileOpen();jsb.setValue(0);} } 
+        {public void actionPerformed(ActionEvent e){fileOpen(null);jsb.setValue(0);} } 
         ); 
         exit.addActionListener(new ActionListener() 
         {public void actionPerformed(ActionEvent e){fileExit();} } 
@@ -188,11 +194,19 @@ public class JSQ {
     }
 
     //////////文件项的方法/////////////////////////
-    private void fileOpen(){ 
-        textArea.setText(""); 
-        JFileChooser fileChooser=new JFileChooser(); 
-        fileChooser.showOpenDialog(frame); 
-        File file=fileChooser.getSelectedFile(); 
+    private void fileOpen(String bookname){ 
+    	
+    	File file;
+    	if (bookname==null){
+    		textArea.setText(""); 
+            JFileChooser fileChooser=new JFileChooser(); 
+            fileChooser.showOpenDialog(frame); 
+            file=fileChooser.getSelectedFile(); 
+    	}
+    	else{
+    		file=new File(bookname);
+    	}
+        
         if(file==null) return; 
         fileName = file.getName();//获得文件名 
         frame.setTitle(file.getAbsolutePath()); 
@@ -220,11 +234,11 @@ public class JSQ {
         option = JOptionPane.showOptionDialog(frame,"是否退出阅读？","exit",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]); 
         switch(option) { 
             case JOptionPane.YES_OPTION: 
-              System.exit(0); 
+              frame.dispose(); 
             case JOptionPane.NO_OPTION: 
               return; 
             default: 
-              System.exit(0); 
+              frame.dispose();
       } 
   } 
 ////////////////////////////////////////////////////////////
@@ -241,9 +255,10 @@ public class JSQ {
     } 
   //////////////////////////////////////////////////////////////
    
-    public static void main(String args[]){
+    public static void main(String s){
     	JSQ nt = new JSQ();
     	nt.frameInit();
+    	nt.fileOpen(s);
     	
     	
     }

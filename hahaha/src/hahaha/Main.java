@@ -1,5 +1,7 @@
 package hahaha;
 
+import java.lang.System;
+import java.io.File;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -43,7 +45,9 @@ public class Main extends Application {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		Initial ini=new Initial();
+		ini.main();
 		launch(args);
 	}
 
