@@ -81,7 +81,8 @@ public class GetArticles {
 			
 			//System.out.println(article.getContent());
 			//bw.write(article.getContent().replaceAll("([\\S]*){4}","1"));
-			bw.write(article.getContent().replace((char)160,(char)10));
+			//bw.write(article.getContent().replace((char)160,(char)10));
+			bw.write(article.getContent().replaceAll("\\u00A0{4}",""+(char)32+(char)32+(char)10+(char)10));
 			//int temp=(int)article.getContent().charAt(0);
 			//int temp2=(int)article.getContent().charAt(4);
 			//System.out.println(temp+" "+temp2);

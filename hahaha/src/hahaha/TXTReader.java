@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.io.*;
 import javax.swing.*; 
 	
-public class JSQ { 
+public class TXTReader { 
     private JFrame frame; 
     private JTextArea textArea; 
     private JMenuBar menuBar; 
@@ -29,9 +29,9 @@ public class JSQ {
 	} );
 
     
-    public JSQ(){ 
+    public TXTReader(){ 
         frame = new JFrame(); 
-        frame.setTitle("未命名"); 
+        frame.setTitle("TXTreader"); 
         frame.setLayout(new BorderLayout()); 
         textArea = new JTextArea(); 
         textArea.setFont(new Font("宋体",Font.PLAIN,18));//设置默认字体样式字号 
@@ -256,7 +256,7 @@ public class JSQ {
   //////////////////////////////////////////////////////////////
    
     public static void main(String s){
-    	JSQ nt = new JSQ();
+    	TXTReader nt = new TXTReader();
     	nt.frameInit();
     	nt.fileOpen(s);
     	
@@ -270,7 +270,7 @@ class font{
     private JButton ok,cancel; 
     private JComboBox fontName,fontSize,fontStyle; 
     GraphicsEnvironment ge;//定义系统字体对象 
-    String[]    size = {"8","10","12","14","16","18","20","22","24","26","28","32","36","48","72","96"}; 
+    String[]    size = {"8","10","12","14","16","18","20"}; 
     String[]    style= {"PLAIN","BOLD","ITALIC"}; 
     JFrame jf = new JFrame("字体设置"); 
     public font(JTextArea textArea){ 
